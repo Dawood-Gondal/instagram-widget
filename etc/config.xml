@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_InstagramWidget
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+	    <m2c_instagram>
+            <general>
+                <enabled>1</enabled>
+                <limit>12</limit>
+                <lazyload>0</lazyload>
+                <slide>1</slide>
+                <vertical>false</vertical>
+                <infinite>true</infinite>
+                <autoplay>true</autoplay>
+                <arrows>false</arrows>
+                <center_mode>false</center_mode>
+                <dots>false</dots>
+                <fade>false</fade>
+                <rows>1</rows>
+                <speed>6000</speed>
+                <autoplay_speed>0</autoplay_speed>
+                <padding>0</padding>
+                <mobile>2</mobile>
+                <portrait>3</portrait>
+                <landscape>3</landscape>
+                <tablet>4</tablet>
+                <notebook>4</notebook>
+                <laptop>5</laptop>
+                <desktop>5</desktop>
+                <widescreen>6</widescreen>
+                <visible>6</visible>
+            </general>
+        </m2c_instagram>
+	</default>
+</config>

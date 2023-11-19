@@ -1,0 +1,57 @@
+<?php
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_InstagramWidget
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+
+/** @var \M2Commerce\InstagramWidget\Helper\Data $helper */
+
+$helper = $this->helper(\M2Commerce\InstagramWidget\Helper\Data::class);
+if (!$helper->getConfigModule('general/enabled'))
+    return;
+
+$selector = 'instagram-' . uniqid();
+$accessToken = $helper->getConfigModule('general/accessToken');
+$username = $helper->getConfigModule('general/username');
+$limit = $helper->getConfigModule('general/limit');
+
+if (!$username)
+    return;
+
+if ($accessToken)
+    $accessToken = "accessToken: '$accessToken',";
+?>
+<div class="social-feed instagram clearfix <?php echo $selector ?>">
+    <section class="section-content"
+        <?php foreach ($this->getFrontendCfg() as $opt) :?>
+            data-<?php echo $opt ?>='<?php echo $this->getData($opt) ?>'
+        <?php endforeach;?>
+    >
+        <h4 class="title"><?php echo $this->getTitle() ?></h4>
+    </section>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'm2c/instagram',
+    ], function($, instagram) {
+        $('.<?php echo $selector?> .section-content').instagram({
+            username: '<?php echo $username ?>',
+            limit: <?php echo $limit ?>,
+            <?php echo $accessToken ?>
+            lazy : false,
+            afterload: function() {
+                var el = $(this).find('.social-list');
+                if( el.length ){
+                    if( !$(this).data( 'vertical') && $('body').hasClass('rtl') ){
+                        el.attr('dir', 'rtl');
+                        $(this).data( 'rtl', true );
+                    }
+                }
+            }
+        })
+    });
+</script>
